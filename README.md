@@ -9,6 +9,16 @@ It's a usable to very simply toast in swift.
   - Easily show string or attributed string.
   - Easily set displaying duration and position.
 
+### **CocoaPods**
+> [https://cocoapods.org/pods/FLToast](https://cocoapods.org/pods/FLToast)
+>
+> ``` pod 'FLToast', '~> 1.0.0' ```
+>
+> Add in '**Podfile**'. and run **pod install**.
+>
+> ``` import Toast ```
+>
+> Add swift code in your project.
 
 ### **How To Use**
 > ``` Toast(text: "It's a SIMPLE Toast message.").show() ```

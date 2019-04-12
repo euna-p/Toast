@@ -12,24 +12,31 @@ It's a usable to very simply toast in swift.
 
 ### **How To Use**
 > ``` Toast(text: "It's a SIMPLE Toast message.").show() ```
-*This is the most basic usage.*
+>
+> *This is the most basic usage.*
 
-> ``` let attributedString = NSMutableAttributedString(string: "It's an Attributed Toast message.\n",```
-``` attributes: [.font: UIFont.systemFont(ofSize: 14.0), .foregroundColor: UIColor.white]) ```
-``` attributedString.append(NSAttributedString(string: "RED ",   attributes: [.font: UIFont.systemFont(ofSize: 14.0), .foregroundColor: UIColor.red])) ```
-``` attributedString.append(NSAttributedString(string: "GREEN ", attributes: [.font: UIFont.systemFont(ofSize: 14.0), .foregroundColor: UIColor.green])) ```
-``` attributedString.append(NSAttributedString(string: "BLUE ",  attributes: [.font: UIFont.systemFont(ofSize: 14.0), .foregroundColor: UIColor.blue])) ```
-``` Toast(text: attributedString).show() ```
-*It's show an attributed string.*
+> ``` let attributedString = NSMutableAttributedString(string: "It's an Attributed Toast message.\n", attributes: [.font: UIFont.systemFont(ofSize: 14.0), .foregroundColor: UIColor.red]) ```
+>
+> ``` Toast(text: attributedString).show() ```
+>
+> *It's show an attributed string.*
 
 > ``` Toast.makeText("It's a Top Toast message.").setGravity(.top).show() ```
-or
-``` Toast.makeText("It's a Middle Toast message.").setGravity(.middle).show() ```
-or
-``` Toast.makeText("It's a Top Bottom message.").setGravity(.bottom).show() ```
-*It can a specify the display position of message.*
+>
+> or
+>
+> ``` Toast.makeText("It's a Middle Toast message.").setGravity(.middle).show() ```
+>
+> or
+>
+>``` Toast.makeText("It's a Top Bottom message.").setGravity(.bottom).show() ```
+>
+> *It can a specify the display position of message.*
 
 > ``` Toast.makeText("It's a Long (5s) Toast message.").setDuration(.long).show() ```
-or
-``` Toast.makeText("It's a Custom Duration (10s) Toast message.").setDuration(10.0).show() ```
-*It can specify the display duration of the message.*
+>
+> or
+>
+>``` Toast.makeText("It's a Custom Duration (10s) Toast message.").setDuration(10.0).show() ```
+>
+> *It can specify the display duration of the message.*

@@ -16,7 +16,7 @@ It's a usable to very simply toast in swift.
 >
 > Add in '**Podfile**'. and run **pod install**.
 >
-> ``` import Toast ```
+> ``` import FLToast ```
 >
 > Add swift code in your project.
 

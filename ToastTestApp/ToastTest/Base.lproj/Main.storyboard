@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ToastTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jgA-jd-31N">
+                                <rect key="frame" x="16" y="60" width="382" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Klt-CO-4FD">
+                                <rect key="frame" x="16" y="102" width="187" height="30"/>
+                                <state key="normal" title="Simply Toast"/>
+                                <connections>
+                                    <action selector="didTappedSimpleToast:" destination="BYZ-38-t0r" eventType="touchUpInside" id="it5-nA-hwY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wzS-mr-G7b">
+                                <rect key="frame" x="211" y="102" width="187" height="30"/>
+                                <state key="normal" title="Attributed Toast"/>
+                                <connections>
+                                    <action selector="didTappedAttributedToast:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Oqb-VS-6Oq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ETT-gR-TNW">
+                                <rect key="frame" x="16" y="144" width="122" height="30"/>
+                                <state key="normal" title="Top Toast"/>
+                                <connections>
+                                    <action selector="didTappedTopToast:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ojQ-tp-AXT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sxh-b5-Fty">
+                                <rect key="frame" x="146" y="144" width="122" height="30"/>
+                                <state key="normal" title="Middle Toast"/>
+                                <connections>
+                                    <action selector="didTappedMiddleToast:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aF0-Dg-DWO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGN-uY-Bbm">
+                                <rect key="frame" x="276" y="144" width="122" height="30"/>
+                                <state key="normal" title="Bottom Toast"/>
+                                <connections>
+                                    <action selector="didTappedBottomToast:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OQI-U1-Kc7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EIt-AH-93E">
+                                <rect key="frame" x="146" y="186" width="122" height="30"/>
+                                <state key="normal" title="Medium Toast"/>
+                                <connections>
+                                    <action selector="didTappedMediumToast:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Jp-gj-LvW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVn-ze-OIA">
+                                <rect key="frame" x="16" y="186" width="122" height="30"/>
+                                <state key="normal" title="Short Toast"/>
+                                <connections>
+                                    <action selector="didTappedShortToast:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NZJ-aG-4Iy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDF-WY-OgJ">
+                                <rect key="frame" x="276" y="186" width="122" height="30"/>
+                                <state key="normal" title="Long Toast"/>
+                                <connections>
+                                    <action selector="didTappedLongToast:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8to-D5-isL"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="BGN-uY-Bbm" firstAttribute="leading" secondItem="Sxh-b5-Fty" secondAttribute="trailing" constant="8" id="06a-Az-UFP"/>
+                            <constraint firstItem="Sxh-b5-Fty" firstAttribute="leading" secondItem="ETT-gR-TNW" secondAttribute="trailing" constant="8" id="0Aj-4J-t8o"/>
+                            <constraint firstItem="eVn-ze-OIA" firstAttribute="leading" secondItem="ETT-gR-TNW" secondAttribute="leading" id="0aC-yZ-ncn"/>
+                            <constraint firstItem="BGN-uY-Bbm" firstAttribute="width" secondItem="ETT-gR-TNW" secondAttribute="width" id="2SK-Rq-SfI"/>
+                            <constraint firstItem="Sxh-b5-Fty" firstAttribute="width" secondItem="ETT-gR-TNW" secondAttribute="width" id="2am-Xe-AoX"/>
+                            <constraint firstItem="wzS-mr-G7b" firstAttribute="width" secondItem="Klt-CO-4FD" secondAttribute="width" id="76e-qK-dFH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jgA-jd-31N" secondAttribute="trailing" constant="16" id="7Bo-E3-HA3"/>
+                            <constraint firstItem="VDF-WY-OgJ" firstAttribute="leading" secondItem="EIt-AH-93E" secondAttribute="trailing" constant="8" id="8K4-e2-91k"/>
+                            <constraint firstItem="EIt-AH-93E" firstAttribute="top" secondItem="eVn-ze-OIA" secondAttribute="top" id="9RM-hv-8Hd"/>
+                            <constraint firstItem="Sxh-b5-Fty" firstAttribute="top" secondItem="ETT-gR-TNW" secondAttribute="top" id="AKD-zH-jn7"/>
+                            <constraint firstItem="EIt-AH-93E" firstAttribute="leading" secondItem="eVn-ze-OIA" secondAttribute="trailing" constant="8" id="E8f-77-8Rz"/>
+                            <constraint firstItem="wzS-mr-G7b" firstAttribute="top" secondItem="Klt-CO-4FD" secondAttribute="top" id="ETL-6Z-bHz"/>
+                            <constraint firstItem="VDF-WY-OgJ" firstAttribute="width" secondItem="eVn-ze-OIA" secondAttribute="width" id="GIP-rr-QyY"/>
+                            <constraint firstItem="VDF-WY-OgJ" firstAttribute="trailing" secondItem="BGN-uY-Bbm" secondAttribute="trailing" id="Hhu-Gg-p8e"/>
+                            <constraint firstItem="VDF-WY-OgJ" firstAttribute="top" secondItem="EIt-AH-93E" secondAttribute="top" id="IT3-PN-xcm"/>
+                            <constraint firstItem="Klt-CO-4FD" firstAttribute="leading" secondItem="jgA-jd-31N" secondAttribute="leading" id="IhD-Om-olO"/>
+                            <constraint firstItem="BGN-uY-Bbm" firstAttribute="top" secondItem="Sxh-b5-Fty" secondAttribute="top" id="Mhl-f8-MUf"/>
+                            <constraint firstItem="Klt-CO-4FD" firstAttribute="top" secondItem="jgA-jd-31N" secondAttribute="bottom" constant="12" id="ZOO-7o-d4c"/>
+                            <constraint firstItem="jgA-jd-31N" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="ZoY-dN-46e"/>
+                            <constraint firstItem="wzS-mr-G7b" firstAttribute="trailing" secondItem="jgA-jd-31N" secondAttribute="trailing" id="Zpb-dt-vdK"/>
+                            <constraint firstItem="wzS-mr-G7b" firstAttribute="leading" secondItem="Klt-CO-4FD" secondAttribute="trailing" constant="8" id="bPq-Om-0Ie"/>
+                            <constraint firstItem="ETT-gR-TNW" firstAttribute="top" secondItem="Klt-CO-4FD" secondAttribute="bottom" constant="12" id="d8j-Uz-ieZ"/>
+                            <constraint firstItem="jgA-jd-31N" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="eas-2U-yuq"/>
+                            <constraint firstItem="eVn-ze-OIA" firstAttribute="top" secondItem="ETT-gR-TNW" secondAttribute="bottom" constant="12" id="hHW-8O-rIA"/>
+                            <constraint firstItem="EIt-AH-93E" firstAttribute="width" secondItem="eVn-ze-OIA" secondAttribute="width" id="lYw-EO-HYK"/>
+                            <constraint firstItem="BGN-uY-Bbm" firstAttribute="trailing" secondItem="wzS-mr-G7b" secondAttribute="trailing" id="ldw-dQ-iRj"/>
+                            <constraint firstItem="wzS-mr-G7b" firstAttribute="bottom" secondItem="Klt-CO-4FD" secondAttribute="bottom" id="mho-t9-27u"/>
+                            <constraint firstItem="ETT-gR-TNW" firstAttribute="leading" secondItem="Klt-CO-4FD" secondAttribute="leading" id="s2g-wL-O4N"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="textfieldForKeyboard" destination="jgA-jd-31N" id="GIZ-7a-gd7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>

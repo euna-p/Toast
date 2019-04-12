@@ -1,8 +1,8 @@
 //
 //  Toast.swift
 //
-//  Created by LONELiE on 08/04/2019.
-//  Copyright © 2019 DEVOgre. All rights reserved.
+//  Created by Lonelie on 08/04/2019.
+//  Copyright © 2019 Lonelie. All rights reserved.
 //
 
 import UIKit

@@ -55,7 +55,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		032A052E22609F0700DFA0ED /* ToastTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToastTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		032A052E22609F0700DFA0ED /* ToastTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToastTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		032A053122609F0700DFA0ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		032A053322609F0700DFA0ED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		032A053622609F0700DFA0ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -89,7 +89,7 @@
 		032A052F22609F0700DFA0ED /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				032A052E22609F0700DFA0ED /* ToastTest.app */,
+				032A052E22609F0700DFA0ED /* ToastTestApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -119,9 +119,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		032A052D22609F0700DFA0ED /* ToastTest */ = {
+		032A052D22609F0700DFA0ED /* ToastTestApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 032A054022609F0800DFA0ED /* Build configuration list for PBXNativeTarget "ToastTest" */;
+			buildConfigurationList = 032A054022609F0800DFA0ED /* Build configuration list for PBXNativeTarget "ToastTestApp" */;
 			buildPhases = (
 				032A052A22609F0700DFA0ED /* Sources */,
 				032A052B22609F0700DFA0ED /* Frameworks */,
@@ -133,9 +133,9 @@
 			dependencies = (
 				03D67BBA2260AC25007BF74A /* PBXTargetDependency */,
 			);
-			name = ToastTest;
+			name = ToastTestApp;
 			productName = ToastTest;
-			productReference = 032A052E22609F0700DFA0ED /* ToastTest.app */;
+			productReference = 032A052E22609F0700DFA0ED /* ToastTestApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -153,7 +153,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 032A052922609F0700DFA0ED /* Build configuration list for PBXProject "ToastTest" */;
+			buildConfigurationList = 032A052922609F0700DFA0ED /* Build configuration list for PBXProject "ToastTestApp" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -172,7 +172,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				032A052D22609F0700DFA0ED /* ToastTest */,
+				032A052D22609F0700DFA0ED /* ToastTestApp */,
 			);
 		};
 /* End PBXProject section */
@@ -375,7 +375,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = DEVOgre.ToastTest;
+				PRODUCT_BUNDLE_IDENTIFIER = DEVOgre.ToastTestApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -394,7 +394,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = DEVOgre.ToastTest;
+				PRODUCT_BUNDLE_IDENTIFIER = DEVOgre.ToastTestApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -404,7 +404,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		032A052922609F0700DFA0ED /* Build configuration list for PBXProject "ToastTest" */ = {
+		032A052922609F0700DFA0ED /* Build configuration list for PBXProject "ToastTestApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				032A053E22609F0800DFA0ED /* Debug */,
@@ -413,7 +413,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		032A054022609F0800DFA0ED /* Build configuration list for PBXNativeTarget "ToastTest" */ = {
+		032A054022609F0800DFA0ED /* Build configuration list for PBXNativeTarget "ToastTestApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				032A054122609F0800DFA0ED /* Debug */,

@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  ToastTest
 //
-//  Created by LeemJH on 12/04/2019.
+//  Created by Lonelie on 12/04/2019.
 //  Copyright © 2019 Lonelie. All rights reserved.
 //
 

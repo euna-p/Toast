@@ -44,7 +44,7 @@ public class Toast {
     }
         
     public func show() {
-        guard let targetWindow = UIApplication.shared.windows.last else { return }
+        guard let targetWindow = UIApplication.shared.windows.filter({ $0.bounds == UIScreen.main.bounds }).last else { return }
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTapToastMessage))
         
         self.labelMessage.numberOfLines            = 0
@@ -122,7 +122,8 @@ public class Toast {
                         ])
             }
             
-            self.viewToastBox.superview?.layoutIfNeeded()
+            self.viewToastBox.layoutIfNeeded()
+            targetWindow.superview?.bringSubviewToFront(targetWindow)
             self.viewToastBox.superview?.bringSubviewToFront(self.viewToastBox)
             
             self.viewToastBox.alpha     = 0.0

@@ -122,6 +122,9 @@ public class Toast {
                         ])
             }
             
+            self.viewToastBox.superview?.layoutIfNeeded()
+            self.viewToastBox.superview?.bringSubviewToFront(self.viewToastBox)
+            
             self.viewToastBox.alpha     = 0.0
             self.viewToastBox.transform = CGAffineTransform(scaleX: 1.125, y: 1.125)
             UIView.animate(withDuration: 0.25, animations: {

@@ -19,17 +19,23 @@ public class Toast {
         case top, middle, bottom
     }
     
+    public enum Context {
+        case topWindow, keyWindow
+    }
+    
     public private(set) var text: NSAttributedString = .init()
     public private(set) var duration: TimeInterval   = Duration.medium.rawValue
     public private(set) var gravity: Gravity         = .bottom
     public private(set) var insets: UIEdgeInsets     = .init(top: 24.0, left: 12.0, bottom: 16.0, right: 12.0)
     public private(set) var completeHandler: (()->Void)?
+    public static var defaultContext: Context = .topWindow
     
     private let uuid = UUID().uuidString
     private static var toastsQueue: [Toast] = []
     private let labelMessage = UILabel()
     private let viewToastBox = UIView()
     private var hideWorkItem: DispatchWorkItem?
+    private var context: UIView?
     
     public init(text: NSAttributedString, duration: TimeInterval, gravity: Gravity = .bottom) {
         self.text     = text
@@ -42,9 +48,9 @@ public class Toast {
                                   attributes: [.font: UIFont.systemFont(ofSize: 14.0),
                                                .foregroundColor: UIColor.white])
     }
-        
+    
     public func show() {
-        guard let targetWindow = UIApplication.shared.windows.filter({ $0.bounds == UIScreen.main.bounds }).last else { return }
+        guard let targetWindow = self.context ?? self.getContext(Toast.defaultContext) else { return }
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTapToastMessage))
         
         self.labelMessage.numberOfLines            = 0
@@ -156,7 +162,7 @@ public class Toast {
                 self.viewToastBox.frame.origin.x -= 24.0
                 self.viewToastBox.frame.origin.y += 160.0
                 self.viewToastBox.transform       = CGAffineTransform(rotationAngle: .pi / -4.0)
-                    
+                
             }
         }, completion: {_ in
             Toast.toastsQueue.remove(at: 0)
@@ -186,13 +192,43 @@ extension Toast {
 
 extension Toast {
     @discardableResult
+    public static func makeText(_ context: UIView, _ text: String) -> Toast {
+        let attributedString = Toast.makeAttributedString(text: text)
+        let instance = Toast(text: attributedString)
+        instance.context = context
+        return instance
+    }
+    @discardableResult
+    public static func makeText(_ context: UIView, _ text: NSAttributedString) -> Toast {
+        let instance = Toast(text: text)
+        instance.context = context
+        return instance
+    }
+    public static func makeText(_ context: Context, _ text: String) -> Toast {
+        let attributedString = Toast.makeAttributedString(text: text)
+        let instance = Toast(text: attributedString)
+        instance.context = instance.getContext(context)
+        return instance
+    }
+    @discardableResult
+    public static func makeText(_ context: Context, _ text: NSAttributedString) -> Toast {
+        let instance = Toast(text: text)
+        instance.context = instance.getContext(context)
+        return instance
+    }
+    
+    @discardableResult
     public static func makeText(_ text: String) -> Toast {
         let attributedString = Toast.makeAttributedString(text: text)
-        return self.makeText(attributedString)
+        let instance = Toast(text: attributedString)
+        instance.context = nil
+        return instance
     }
     @discardableResult
     public static func makeText(_ text: NSAttributedString) -> Toast {
-        return Toast(text: text)
+        let instance = Toast(text: text)
+        instance.context = nil
+        return instance
     }
     
     @discardableResult
@@ -235,5 +271,12 @@ extension Toast {
     private func getSafeAreaInsets() -> UIEdgeInsets {
         guard #available(iOS 11.0, *), let window = UIApplication.shared.keyWindow else { return .zero }
         return window.safeAreaInsets
+    }
+    
+    private func getContext(_ context: Context) -> UIView? {
+        switch context {
+        case .topWindow: return UIApplication.shared.windows.last
+        case .keyWindow: return UIApplication.shared.keyWindow
+        }
     }
 }

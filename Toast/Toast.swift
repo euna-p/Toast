@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 public class Toast {
     public enum Duration: TimeInterval {
         case short  = 1.0
@@ -49,17 +48,19 @@ public class Toast {
         self.duration = duration
         self.gravity  = gravity
     }
-    
-    public convenience init(text: NSAttributedString, duration: Duration, gravity: Gravity = Toast.defaultGravity) {
-        self.init(text: text, duration: duration.rawValue)
-    }
-    
+}
+
+//MARK: - makeAttributedString
+extension Toast {
     private static func makeAttributedString(text: String) -> NSAttributedString {
         return NSAttributedString(string:     String(format: "%@", text),
                                   attributes: [.font:            Toast.defaultTextFont,
                                                .foregroundColor: Toast.defaultTextColor])
     }
-    
+}
+
+//MARK: - show
+extension Toast {
     public func show() {
         guard let targetWindow = self.context ?? self.getContext(Toast.defaultContext) else { return }
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTapToastMessage))
@@ -102,40 +103,50 @@ public class Toast {
             self.viewToastBox.translatesAutoresizingMaskIntoConstraints = false
             targetWindow
                 .addConstraints([
-                    .init(item:   self.viewToastBox, attribute: .centerX,  relatedBy: .equal,
-                          toItem: targetWindow,      attribute: .centerX,  multiplier: 1.0,                constant:  0.0),
-                    .init(item:   self.viewToastBox, attribute: .leading,  relatedBy: .greaterThanOrEqual,
-                          toItem: targetWindow,      attribute: .leading,  multiplier: 1.0,                constant:  self.insets.left),
-                    .init(item:   self.viewToastBox, attribute: .trailing, relatedBy: .lessThanOrEqual,
-                          toItem: targetWindow,      attribute: .trailing, multiplier: 1.0,                constant: -self.insets.right)
+                    .init(item:     self.viewToastBox, attribute: .centerX,  relatedBy: .equal,
+                          toItem:   targetWindow,      attribute: .centerX,  multiplier: 1.0,
+                          constant: 0.0),
+                    .init(item:     self.viewToastBox, attribute: .leading,  relatedBy: .greaterThanOrEqual,
+                          toItem:   targetWindow,      attribute: .leading,  multiplier: 1.0,
+                          constant: self.insets.left),
+                    .init(item:     self.viewToastBox, attribute: .trailing, relatedBy: .lessThanOrEqual,
+                          toItem:   targetWindow,      attribute: .trailing, multiplier: 1.0,
+                          constant: -self.insets.right)
                     ])
             
             switch self.gravity {
             case .top:
                 targetWindow
                     .addConstraints([
-                        .init(item:   self.viewToastBox, attribute: .top,    relatedBy: .equal,
-                              toItem: targetWindow,      attribute: .top,    multiplier: 1.0,                constant:  self.getSafeAreaInsets().top + self.insets.top),
-                        .init(item:   self.viewToastBox, attribute: .bottom, relatedBy: .lessThanOrEqual,
-                              toItem: targetWindow,      attribute: .bottom, multiplier: 1.0,                constant: -(self.getSafeAreaInsets().bottom + self.insets.bottom))
+                        .init(item:     self.viewToastBox, attribute: .top,    relatedBy: .equal,
+                              toItem:   targetWindow,      attribute: .top,    multiplier: 1.0,
+                              constant: self.getSafeAreaInsets().top + self.insets.top),
+                        .init(item:     self.viewToastBox, attribute: .bottom, relatedBy: .lessThanOrEqual,
+                              toItem:   targetWindow,      attribute: .bottom, multiplier: 1.0,
+                              constant: -(self.getSafeAreaInsets().bottom + self.insets.bottom))
                         ])
             case .middle:
                 targetWindow
                     .addConstraints([
-                        .init(item:   self.viewToastBox, attribute: .centerY, relatedBy: .equal,
-                              toItem: targetWindow,      attribute: .centerY, multiplier: 1.0,                constant:  0.0),
-                        .init(item:   self.viewToastBox, attribute: .top,     relatedBy: .greaterThanOrEqual,
-                              toItem: targetWindow,      attribute: .top,     multiplier: 1.0,                constant:  self.getSafeAreaInsets().top + self.insets.top),
-                        .init(item:   self.viewToastBox, attribute: .bottom,  relatedBy: .lessThanOrEqual,
-                              toItem: targetWindow,      attribute: .bottom,  multiplier: 1.0,                constant: -(self.getSafeAreaInsets().bottom + self.insets.bottom))
+                        .init(item:     self.viewToastBox, attribute: .centerY, relatedBy: .equal,
+                              toItem:   targetWindow,      attribute: .centerY, multiplier: 1.0,
+                              constant: 0.0),
+                        .init(item:     self.viewToastBox, attribute: .top,     relatedBy: .greaterThanOrEqual,
+                              toItem:   targetWindow,      attribute: .top,     multiplier: 1.0,
+                              constant: self.getSafeAreaInsets().top + self.insets.top),
+                        .init(item:     self.viewToastBox, attribute: .bottom,  relatedBy: .lessThanOrEqual,
+                              toItem:   targetWindow,      attribute: .bottom,  multiplier: 1.0,
+                              constant: -(self.getSafeAreaInsets().bottom + self.insets.bottom))
                         ])
             case .bottom:
                 targetWindow
                     .addConstraints([
-                        .init(item:   self.viewToastBox, attribute: .top,    relatedBy: .greaterThanOrEqual,
-                              toItem: targetWindow,      attribute: .top,    multiplier: 1.0,                constant:  self.getSafeAreaInsets().top + self.insets.top),
-                        .init(item:   self.viewToastBox, attribute: .bottom, relatedBy: .equal,
-                              toItem: targetWindow,      attribute: .bottom, multiplier: 1.0,                constant: -(self.getSafeAreaInsets().bottom + self.insets.bottom))
+                        .init(item:     self.viewToastBox, attribute: .top,    relatedBy: .greaterThanOrEqual,
+                              toItem:   targetWindow,      attribute: .top,    multiplier: 1.0,
+                              constant: self.getSafeAreaInsets().top + self.insets.top),
+                        .init(item:     self.viewToastBox, attribute: .bottom, relatedBy: .equal,
+                              toItem:   targetWindow,      attribute: .bottom, multiplier: 1.0,
+                              constant: -(self.getSafeAreaInsets().bottom + self.insets.bottom))
                         ])
             }
             
@@ -159,7 +170,11 @@ public class Toast {
             DispatchQueue.main.asyncAfter(deadline: .now() + self.duration, execute: self.hideWorkItem!)
         }
     }
-    
+}
+
+
+//MARK: - GestureRecognizer
+extension Toast {
     @objc private func didTapToastMessage(_ gesture: UITapGestureRecognizer) {
         self.hideWorkItem?.cancel()
         self.hideAnimate(isDrown: true)
@@ -186,17 +201,28 @@ public class Toast {
     }
 }
 
+//MARK: - initializers
 extension Toast {
-    public convenience init(text: String, duration: Duration, gravity: Gravity = Toast.defaultGravity) {
+    public convenience init(text: NSAttributedString, duration: Duration, gravity: Gravity) {
         self.init(text: text, duration: duration.rawValue)
     }
     
-    public convenience init(text: String, duration: TimeInterval = Toast.defaultDuration, gravity: Gravity = Toast.defaultGravity) {
+    public convenience init(text: String, duration: TimeInterval, gravity: Gravity) {
         let attributedString = Toast.makeAttributedString(text: text)
         self.init(text: attributedString, duration: duration, gravity: gravity)
     }
+    public convenience init(text: String, duration: Duration, gravity: Gravity) {
+        self.init(text: text, duration: duration.rawValue, gravity: gravity)
+    }
+    
+    public convenience init(text: String) {
+        self.init(text:     text,
+                  duration: Toast.defaultDuration,
+                  gravity:  Toast.defaultGravity)
+    }
 }
 
+//MARK: - makeText
 extension Toast {
     @discardableResult
     public static func makeText(_ context: UIView, _ text: String) -> Toast {
@@ -237,7 +263,10 @@ extension Toast {
         instance.context = nil
         return instance
     }
-    
+}
+
+//MARK: - setDuration
+extension Toast {
     @discardableResult
     public func setDuration(_ duration: Duration) -> Toast {
         self.setDuration(duration.rawValue)
@@ -248,13 +277,19 @@ extension Toast {
         self.duration = duration
         return self
     }
-    
+}
+
+//MARK: - setGravity
+extension Toast {
     @discardableResult
     public func setGravity(_ gravity: Gravity) -> Toast {
         self.gravity = gravity
         return self
     }
-    
+}
+
+//MARK: - setInsets
+extension Toast {
     @discardableResult
     public func setInsets(_ insets: UIEdgeInsets) -> Toast {
         self.insets = insets
@@ -266,7 +301,10 @@ extension Toast {
         self.insets = .init(top: top, left: left, bottom: bottom, right: right)
         return self
     }
-    
+}
+
+//MARK: - setCompleteHandler
+extension Toast {
     @discardableResult
     public func setCompleteHandler(_ closure: (()->Void)?) -> Toast {
         self.completeHandler = closure
@@ -274,6 +312,7 @@ extension Toast {
     }
 }
 
+//MARK: - functions
 extension Toast {
     private func getSafeAreaInsets() -> UIEdgeInsets {
         guard #available(iOS 11.0, *), let window = UIApplication.shared.keyWindow else { return .zero }

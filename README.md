@@ -12,7 +12,7 @@ It's a usable to very simply toast in swift.
 ### **CocoaPods**
 > [https://cocoapods.org/pods/FLToast](https://cocoapods.org/pods/FLToast)
 >
-> ``` pod 'FLToast', '~> 1.0.3' ```
+> ``` pod 'FLToast', '~> 1.0.4' ```
 >
 > Add in '**Podfile**'. and run **pod install**.
 >

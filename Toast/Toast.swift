@@ -23,12 +23,19 @@ public class Toast {
         case topWindow, keyWindow
     }
     
+    public static var defaultContext: Context       = .topWindow
+    public static var defaultDuration: TimeInterval = Duration.medium.rawValue
+    public static var defaultGravity: Gravity       = .bottom
+    public static var defaultInsets: UIEdgeInsets   = .init(top: 24.0, left: 12.0, bottom: 16.0, right: 12.0)
+    public static var defaultRectRound: CGFloat     = 6.0
+    public static var defaultTextFont: UIFont       = .systemFont(ofSize: 14.0)
+    public static var defaultTextColor: UIColor     = .white
+    
     public private(set) var text: NSAttributedString = .init()
-    public private(set) var duration: TimeInterval   = Duration.medium.rawValue
-    public private(set) var gravity: Gravity         = .bottom
-    public private(set) var insets: UIEdgeInsets     = .init(top: 24.0, left: 12.0, bottom: 16.0, right: 12.0)
+    public private(set) var duration: TimeInterval   = Toast.defaultDuration
+    public private(set) var gravity: Gravity         = Toast.defaultGravity
+    public private(set) var insets: UIEdgeInsets     = Toast.defaultInsets
     public private(set) var completeHandler: (()->Void)?
-    public static var defaultContext: Context = .topWindow
     
     private let uuid = UUID().uuidString
     private static var toastsQueue: [Toast] = []
@@ -37,16 +44,20 @@ public class Toast {
     private var hideWorkItem: DispatchWorkItem?
     private var context: UIView?
     
-    public init(text: NSAttributedString, duration: TimeInterval, gravity: Gravity = .bottom) {
+    public init(text: NSAttributedString, duration: TimeInterval = Toast.defaultDuration, gravity: Gravity = Toast.defaultGravity) {
         self.text     = text
         self.duration = duration
         self.gravity  = gravity
     }
     
+    public convenience init(text: NSAttributedString, duration: Duration, gravity: Gravity = Toast.defaultGravity) {
+        self.init(text: text, duration: duration.rawValue)
+    }
+    
     private static func makeAttributedString(text: String) -> NSAttributedString {
-        return NSAttributedString(string: String(format: "%@", text),
-                                  attributes: [.font: UIFont.systemFont(ofSize: 14.0),
-                                               .foregroundColor: UIColor.white])
+        return NSAttributedString(string:     String(format: "%@", text),
+                                  attributes: [.font:            Toast.defaultTextFont,
+                                               .foregroundColor: Toast.defaultTextColor])
     }
     
     public func show() {
@@ -59,7 +70,7 @@ public class Toast {
         self.labelMessage.isUserInteractionEnabled = false
         
         self.viewToastBox.backgroundColor          = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.66)
-        self.viewToastBox.layer.cornerRadius       = 6.0
+        self.viewToastBox.layer.cornerRadius       = Toast.defaultRectRound
         self.viewToastBox.layer.masksToBounds      = true
         self.viewToastBox.layer.borderColor        = UIColor.clear.cgColor
         self.viewToastBox.layer.borderWidth        = 0.0
@@ -176,17 +187,13 @@ public class Toast {
 }
 
 extension Toast {
-    public convenience init(text: String, duration: Duration = .medium, gravity: Gravity = .bottom) {
-        self.init(text: text, duration: duration.rawValue)
+    public convenience init(text: String, duration: Duration, gravity: Gravity = Toast.defaultGravity) {
+        self.init(text: text, duration: duration)
     }
     
-    public convenience init(text: String, duration: TimeInterval, gravity: Gravity = .bottom) {
+    public convenience init(text: String, duration: TimeInterval = Toast.defaultDuration, gravity: Gravity = Toast.defaultGravity) {
         let attributedString = Toast.makeAttributedString(text: text)
         self.init(text: attributedString, duration: duration, gravity: gravity)
-    }
-    
-    public convenience init(text: NSAttributedString, duration: Duration = .medium, gravity: Gravity = .bottom) {
-        self.init(text: text, duration: duration.rawValue)
     }
 }
 
@@ -275,8 +282,13 @@ extension Toast {
     
     private func getContext(_ context: Context) -> UIView? {
         switch context {
-        case .topWindow: return UIApplication.shared.windows.last
-        case .keyWindow: return UIApplication.shared.keyWindow
+        case .topWindow:
+            return UIApplication.shared.windows
+                .filter({ !$0.isHidden })
+                .filter({ $0.alpha > 0.0 })
+                .last
+        case .keyWindow:
+            return UIApplication.shared.keyWindow
         }
     }
 }

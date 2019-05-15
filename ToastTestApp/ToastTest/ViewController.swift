@@ -28,13 +28,13 @@ class ViewController: UIViewController {
     
     @IBAction private func didTappedAttributedToast(_ sender: UIButton) {
         let attributedString = NSMutableAttributedString(string: "It's an Attributed Toast message.\n",
-                                                         attributes: [.font: UIFont.systemFont(ofSize: 14.0),
+                                                         attributes: [.font: Toast.defaultTextFont,
                                                                       .foregroundColor: UIColor.white])
-        attributedString.append(NSAttributedString(string: "RED ",   attributes: [.font: UIFont.systemFont(ofSize: 14.0),
+        attributedString.append(NSAttributedString(string: "RED ",   attributes: [.font: Toast.defaultTextFont,
                                                                                   .foregroundColor: UIColor.red]))
-        attributedString.append(NSAttributedString(string: "GREEN ", attributes: [.font: UIFont.systemFont(ofSize: 14.0),
+        attributedString.append(NSAttributedString(string: "GREEN ", attributes: [.font: Toast.defaultTextFont,
                                                                                   .foregroundColor: UIColor.green]))
-        attributedString.append(NSAttributedString(string: "BLUE ",  attributes: [.font: UIFont.systemFont(ofSize: 14.0),
+        attributedString.append(NSAttributedString(string: "BLUE ",  attributes: [.font: Toast.defaultTextFont,
                                                                                   .foregroundColor: UIColor.blue]))
         Toast(text: attributedString).show()
     }
@@ -78,6 +78,33 @@ class ViewController: UIViewController {
         Toast
             .makeText("It's a Long (5s) Toast message.")
             .setDuration(.long)
+            .show()
+    }
+    
+    @IBAction private func didTappedDefaultSizeToast(_ sender: UIButton) {
+        Toast.defaultTextFont  = .systemFont(ofSize: 14.0)
+        Toast.defaultRectRound = 6.0
+        Toast
+            .makeText("It's Default size Toast message.")
+            .show()
+    }
+    
+    @IBAction private func didTappedBigSizeToast(_ sender: UIButton) {
+        Toast.defaultTextFont  = .systemFont(ofSize: 24.0)
+        Toast.defaultRectRound = 14.0
+        Toast
+            .makeText("It's BIG SIZE Toast message.")
+            .show()
+    }
+    
+    @IBAction private func didTappedCompleteHandledToast(_ sender: UIButton) {
+        Toast
+            .makeText("It's will show alert in after dismiss to this toast.")
+            .setCompleteHandler({[weak self] in
+                let alert = UIAlertController(title: "TOAST", message: "COMPLETED!", preferredStyle: .alert)
+                alert.addAction(.init(title: "OK", style: .cancel, handler: nil))
+                self?.present(alert, animated: true, completion: nil)
+            })
             .show()
     }
 }

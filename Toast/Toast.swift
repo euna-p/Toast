@@ -188,7 +188,7 @@ public class Toast {
 
 extension Toast {
     public convenience init(text: String, duration: Duration, gravity: Gravity = Toast.defaultGravity) {
-        self.init(text: text, duration: duration)
+        self.init(text: text, duration: duration.rawValue)
     }
     
     public convenience init(text: String, duration: TimeInterval = Toast.defaultDuration, gravity: Gravity = Toast.defaultGravity) {

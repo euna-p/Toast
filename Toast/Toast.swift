@@ -172,6 +172,35 @@ extension Toast {
     }
 }
 
+//MARK: - dismiss
+extension Toast {
+    public static func dismiss() {
+        guard let toast = Toast.toastsQueue.first else { return }
+        
+        toast.hideWorkItem?.cancel()
+        UIView.animate(withDuration: 0.25, animations: {
+            toast.viewToastBox.alpha = 0.0
+        }, completion: {_ in
+            toast.viewToastBox.removeFromSuperview()
+            if Toast.toastsQueue.count > 0 {
+                Toast.toastsQueue.remove(at: 0)
+                Toast.toastsQueue.first?.show()
+            }
+        })
+    }
+    
+    public static func dismissAll() {
+        guard let toast = Toast.toastsQueue.first else { return }
+        
+        toast.hideWorkItem?.cancel()
+        Toast.toastsQueue = []
+        UIView.animate(withDuration: 0.25, animations: {
+            toast.viewToastBox.alpha = 0.0
+        }, completion: {_ in
+            toast.viewToastBox.removeFromSuperview()
+        })
+    }
+}
 
 //MARK: - GestureRecognizer
 extension Toast {
@@ -191,9 +220,9 @@ extension Toast {
                 
             }
         }, completion: {_ in
-            Toast.toastsQueue.remove(at: 0)
             self.viewToastBox.removeFromSuperview()
             if Toast.toastsQueue.count > 0 {
+                Toast.toastsQueue.remove(at: 0)
                 Toast.toastsQueue.first?.show()
             }
             self.completeHandler?()

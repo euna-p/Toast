@@ -47,6 +47,32 @@ public class Toast {
         self.text     = text
         self.duration = duration
         self.gravity  = gravity
+        
+        NotificationCenter
+            .default
+            .addObserver(self,
+                         selector: #selector(self.didChangedKeyboardState),
+                         name:     UIResponder.keyboardWillShowNotification,
+                         object:   nil)
+        NotificationCenter
+            .default
+            .addObserver(self,
+                         selector: #selector(self.didChangedKeyboardState),
+                         name:     UIResponder.keyboardWillHideNotification,
+                         object:   nil)
+    }
+    
+    deinit {
+        NotificationCenter
+            .default
+            .removeObserver(self,
+                            name:   UIResponder.keyboardWillShowNotification,
+                            object: nil)
+        NotificationCenter
+            .default
+            .removeObserver(self,
+                            name:   UIResponder.keyboardWillHideNotification,
+                            object: nil)
     }
 }
 
@@ -84,75 +110,7 @@ extension Toast {
         }
         
         if let firstToast = Toast.toastsQueue.first, firstToast.uuid == self.uuid {
-            self.viewToastBox.addSubview(self.labelMessage)
-            targetWindow.addSubview(self.viewToastBox)
-            
-            self.labelMessage.translatesAutoresizingMaskIntoConstraints = false
-            self.viewToastBox
-                .addConstraints([
-                    .init(item:   self.labelMessage, attribute: .top,      relatedBy: .equal,
-                          toItem: self.viewToastBox, attribute: .top,      multiplier: 1.0,   constant:  4.0),
-                    .init(item:   self.labelMessage, attribute: .leading,  relatedBy: .equal,
-                          toItem: self.viewToastBox, attribute: .leading,  multiplier: 1.0,   constant:  8.0),
-                    .init(item:   self.labelMessage, attribute: .trailing, relatedBy: .equal,
-                          toItem: self.viewToastBox, attribute: .trailing, multiplier: 1.0,   constant: -8.0),
-                    .init(item:   self.labelMessage, attribute: .bottom,   relatedBy: .equal,
-                          toItem: self.viewToastBox, attribute: .bottom,   multiplier: 1.0,   constant: -4.0)
-                    ])
-            
-            self.viewToastBox.translatesAutoresizingMaskIntoConstraints = false
-            targetWindow
-                .addConstraints([
-                    .init(item:     self.viewToastBox, attribute: .centerX,  relatedBy: .equal,
-                          toItem:   targetWindow,      attribute: .centerX,  multiplier: 1.0,
-                          constant: 0.0),
-                    .init(item:     self.viewToastBox, attribute: .leading,  relatedBy: .greaterThanOrEqual,
-                          toItem:   targetWindow,      attribute: .leading,  multiplier: 1.0,
-                          constant: self.insets.left),
-                    .init(item:     self.viewToastBox, attribute: .trailing, relatedBy: .lessThanOrEqual,
-                          toItem:   targetWindow,      attribute: .trailing, multiplier: 1.0,
-                          constant: -self.insets.right)
-                    ])
-            
-            switch self.gravity {
-            case .top:
-                targetWindow
-                    .addConstraints([
-                        .init(item:     self.viewToastBox, attribute: .top,    relatedBy: .equal,
-                              toItem:   targetWindow,      attribute: .top,    multiplier: 1.0,
-                              constant: self.getSafeAreaInsets().top + self.insets.top),
-                        .init(item:     self.viewToastBox, attribute: .bottom, relatedBy: .lessThanOrEqual,
-                              toItem:   targetWindow,      attribute: .bottom, multiplier: 1.0,
-                              constant: -(self.getSafeAreaInsets().bottom + self.insets.bottom))
-                        ])
-            case .middle:
-                targetWindow
-                    .addConstraints([
-                        .init(item:     self.viewToastBox, attribute: .centerY, relatedBy: .equal,
-                              toItem:   targetWindow,      attribute: .centerY, multiplier: 1.0,
-                              constant: 0.0),
-                        .init(item:     self.viewToastBox, attribute: .top,     relatedBy: .greaterThanOrEqual,
-                              toItem:   targetWindow,      attribute: .top,     multiplier: 1.0,
-                              constant: self.getSafeAreaInsets().top + self.insets.top),
-                        .init(item:     self.viewToastBox, attribute: .bottom,  relatedBy: .lessThanOrEqual,
-                              toItem:   targetWindow,      attribute: .bottom,  multiplier: 1.0,
-                              constant: -(self.getSafeAreaInsets().bottom + self.insets.bottom))
-                        ])
-            case .bottom:
-                targetWindow
-                    .addConstraints([
-                        .init(item:     self.viewToastBox, attribute: .top,    relatedBy: .greaterThanOrEqual,
-                              toItem:   targetWindow,      attribute: .top,    multiplier: 1.0,
-                              constant: self.getSafeAreaInsets().top + self.insets.top),
-                        .init(item:     self.viewToastBox, attribute: .bottom, relatedBy: .equal,
-                              toItem:   targetWindow,      attribute: .bottom, multiplier: 1.0,
-                              constant: -(self.getSafeAreaInsets().bottom + self.insets.bottom))
-                        ])
-            }
-            
-            self.viewToastBox.layoutIfNeeded()
-            targetWindow.superview?.bringSubviewToFront(targetWindow)
-            self.viewToastBox.superview?.bringSubviewToFront(self.viewToastBox)
+            self.addToastView(target: targetWindow)
             
             self.viewToastBox.alpha     = 0.0
             self.viewToastBox.transform = CGAffineTransform(scaleX: 1.125, y: 1.125)
@@ -169,6 +127,79 @@ extension Toast {
             })
             DispatchQueue.main.asyncAfter(deadline: .now() + self.duration, execute: self.hideWorkItem!)
         }
+    }
+    
+    private func addToastView(target targetWindow: UIView) {
+        self.viewToastBox.removeFromSuperview()
+        self.viewToastBox.addSubview(self.labelMessage)
+        targetWindow.addSubview(self.viewToastBox)
+        
+        self.labelMessage.translatesAutoresizingMaskIntoConstraints = false
+        self.viewToastBox
+            .addConstraints([
+                .init(item:   self.labelMessage, attribute: .top,      relatedBy: .equal,
+                      toItem: self.viewToastBox, attribute: .top,      multiplier: 1.0,   constant:  4.0),
+                .init(item:   self.labelMessage, attribute: .leading,  relatedBy: .equal,
+                      toItem: self.viewToastBox, attribute: .leading,  multiplier: 1.0,   constant:  8.0),
+                .init(item:   self.labelMessage, attribute: .trailing, relatedBy: .equal,
+                      toItem: self.viewToastBox, attribute: .trailing, multiplier: 1.0,   constant: -8.0),
+                .init(item:   self.labelMessage, attribute: .bottom,   relatedBy: .equal,
+                      toItem: self.viewToastBox, attribute: .bottom,   multiplier: 1.0,   constant: -4.0)
+                ])
+        
+        self.viewToastBox.translatesAutoresizingMaskIntoConstraints = false
+        targetWindow
+            .addConstraints([
+                .init(item:     self.viewToastBox, attribute: .centerX,  relatedBy: .equal,
+                      toItem:   targetWindow,      attribute: .centerX,  multiplier: 1.0,
+                      constant: 0.0),
+                .init(item:     self.viewToastBox, attribute: .leading,  relatedBy: .greaterThanOrEqual,
+                      toItem:   targetWindow,      attribute: .leading,  multiplier: 1.0,
+                      constant: self.insets.left),
+                .init(item:     self.viewToastBox, attribute: .trailing, relatedBy: .lessThanOrEqual,
+                      toItem:   targetWindow,      attribute: .trailing, multiplier: 1.0,
+                      constant: -self.insets.right)
+                ])
+        
+        switch self.gravity {
+        case .top:
+            targetWindow
+                .addConstraints([
+                    .init(item:     self.viewToastBox, attribute: .top,    relatedBy: .equal,
+                          toItem:   targetWindow,      attribute: .top,    multiplier: 1.0,
+                          constant: self.getSafeAreaInsets().top + self.insets.top),
+                    .init(item:     self.viewToastBox, attribute: .bottom, relatedBy: .lessThanOrEqual,
+                          toItem:   targetWindow,      attribute: .bottom, multiplier: 1.0,
+                          constant: -(self.getSafeAreaInsets().bottom + self.insets.bottom))
+                    ])
+        case .middle:
+            targetWindow
+                .addConstraints([
+                    .init(item:     self.viewToastBox, attribute: .centerY, relatedBy: .equal,
+                          toItem:   targetWindow,      attribute: .centerY, multiplier: 1.0,
+                          constant: 0.0),
+                    .init(item:     self.viewToastBox, attribute: .top,     relatedBy: .greaterThanOrEqual,
+                          toItem:   targetWindow,      attribute: .top,     multiplier: 1.0,
+                          constant: self.getSafeAreaInsets().top + self.insets.top),
+                    .init(item:     self.viewToastBox, attribute: .bottom,  relatedBy: .lessThanOrEqual,
+                          toItem:   targetWindow,      attribute: .bottom,  multiplier: 1.0,
+                          constant: -(self.getSafeAreaInsets().bottom + self.insets.bottom))
+                    ])
+        case .bottom:
+            targetWindow
+                .addConstraints([
+                    .init(item:     self.viewToastBox, attribute: .top,    relatedBy: .greaterThanOrEqual,
+                          toItem:   targetWindow,      attribute: .top,    multiplier: 1.0,
+                          constant: self.getSafeAreaInsets().top + self.insets.top),
+                    .init(item:     self.viewToastBox, attribute: .bottom, relatedBy: .equal,
+                          toItem:   targetWindow,      attribute: .bottom, multiplier: 1.0,
+                          constant: -(self.getSafeAreaInsets().bottom + self.insets.bottom))
+                    ])
+        }
+        
+        self.viewToastBox.layoutIfNeeded()
+        targetWindow.superview?.bringSubviewToFront(targetWindow)
+        self.viewToastBox.superview?.bringSubviewToFront(self.viewToastBox)
     }
 }
 
@@ -344,7 +375,9 @@ extension Toast {
 //MARK: - functions
 extension Toast {
     private func getSafeAreaInsets() -> UIEdgeInsets {
-        guard #available(iOS 11.0, *), let window = UIApplication.shared.keyWindow else { return .zero }
+        guard #available(iOS 11.0, *),
+              let window = UIApplication.shared.keyWindow
+        else { return .zero }
         return window.safeAreaInsets
     }
     
@@ -358,5 +391,11 @@ extension Toast {
         case .keyWindow:
             return UIApplication.shared.keyWindow
         }
+    }
+    
+    @objc
+    private func didChangedKeyboardState(_ notification: NSNotification) {
+        guard let targetWindow = self.getContext(Toast.defaultContext) else { return }
+        self.addToastView(target: targetWindow)
     }
 }

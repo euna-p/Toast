@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,89 +17,153 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jgA-jd-31N">
-                                <rect key="frame" x="16" y="60" width="382" height="30"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="16" y="60" width="382" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Klt-CO-4FD">
-                                <rect key="frame" x="16" y="102" width="187" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Klt-CO-4FD">
+                                <rect key="frame" x="16" y="106" width="187" height="31"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="Simply Toast"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Simply Toast">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="didTappedSimpleToast:" destination="BYZ-38-t0r" eventType="touchUpInside" id="it5-nA-hwY"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wzS-mr-G7b">
-                                <rect key="frame" x="211" y="102" width="187" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wzS-mr-G7b">
+                                <rect key="frame" x="211" y="106" width="187" height="31"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="Attributed Toast"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Attributed Toast">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="didTappedAttributedToast:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Oqb-VS-6Oq"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ETT-gR-TNW">
-                                <rect key="frame" x="16" y="144" width="122" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ETT-gR-TNW">
+                                <rect key="frame" x="16" y="149" width="122" height="31"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="Top Toast"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Top Toast">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="didTappedTopToast:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ojQ-tp-AXT"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sxh-b5-Fty">
-                                <rect key="frame" x="146" y="144" width="122" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sxh-b5-Fty">
+                                <rect key="frame" x="146" y="149" width="122" height="31"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="Middle Toast"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Middle Toast">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="didTappedMiddleToast:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aF0-Dg-DWO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGN-uY-Bbm">
-                                <rect key="frame" x="276" y="144" width="122" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGN-uY-Bbm">
+                                <rect key="frame" x="276" y="149" width="122" height="31"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="Bottom Toast"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Bottom Toast">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="didTappedBottomToast:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OQI-U1-Kc7"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EIt-AH-93E">
-                                <rect key="frame" x="146" y="186" width="122" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EIt-AH-93E">
+                                <rect key="frame" x="146" y="192" width="122" height="31"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="Medium Toast"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Medium Toast">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="didTappedMediumToast:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Jp-gj-LvW"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVn-ze-OIA">
-                                <rect key="frame" x="16" y="186" width="122" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVn-ze-OIA">
+                                <rect key="frame" x="16" y="192" width="122" height="31"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="Short Toast"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Short Toast">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="didTappedShortToast:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NZJ-aG-4Iy"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDF-WY-OgJ">
-                                <rect key="frame" x="276" y="186" width="122" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDF-WY-OgJ">
+                                <rect key="frame" x="276" y="192" width="122" height="31"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="Long Toast"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Long Toast">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="didTappedLongToast:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8to-D5-isL"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bA0-pH-AEI">
-                                <rect key="frame" x="16" y="228" width="187" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bA0-pH-AEI">
+                                <rect key="frame" x="16" y="235" width="187" height="31"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="Size to Default"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Size to Default">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="didTappedDefaultSizeToast:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rAg-cw-thY"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jdx-rI-jrA">
-                                <rect key="frame" x="211" y="228" width="187" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jdx-rI-jrA">
+                                <rect key="frame" x="211" y="235" width="187" height="31"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="Size To Big"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Size To Big">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="didTappedBigSizeToast:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BwB-UZ-hpQ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hzS-pq-yCa">
-                                <rect key="frame" x="16" y="270" width="382" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hzS-pq-yCa">
+                                <rect key="frame" x="16" y="278" width="382" height="31"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="COMPLETE HANDLER"/>
+                                <buttonConfiguration key="configuration" style="plain" title="COMPLETE HANDLER">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="didTappedCompleteHandledToast:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MpP-mk-7gr"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oqv-b4-UFV">
+                                <rect key="frame" x="16" y="317" width="187" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="DEFAULT STYLE TOAST">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="didTappedDefaultStyleToast:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EKp-BB-ixc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oKo-dN-fvY">
+                                <rect key="frame" x="211" y="317" width="187" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="CUSTOM STYLE TOAST">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="didTappedCustomStyleToast:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pjr-LT-X41"/>
+                                </connections>
+                            </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="BGN-uY-Bbm" firstAttribute="leading" secondItem="Sxh-b5-Fty" secondAttribute="trailing" constant="8" id="06a-Az-UFP"/>
@@ -113,12 +175,14 @@
                             <constraint firstItem="bA0-pH-AEI" firstAttribute="top" secondItem="eVn-ze-OIA" secondAttribute="bottom" constant="12" id="4Va-we-Ins"/>
                             <constraint firstItem="wzS-mr-G7b" firstAttribute="width" secondItem="Klt-CO-4FD" secondAttribute="width" id="76e-qK-dFH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jgA-jd-31N" secondAttribute="trailing" constant="16" id="7Bo-E3-HA3"/>
+                            <constraint firstItem="oKo-dN-fvY" firstAttribute="trailing" secondItem="hzS-pq-yCa" secondAttribute="trailing" id="8I9-gA-fBm"/>
                             <constraint firstItem="VDF-WY-OgJ" firstAttribute="leading" secondItem="EIt-AH-93E" secondAttribute="trailing" constant="8" id="8K4-e2-91k"/>
                             <constraint firstItem="EIt-AH-93E" firstAttribute="top" secondItem="eVn-ze-OIA" secondAttribute="top" id="9RM-hv-8Hd"/>
                             <constraint firstItem="Sxh-b5-Fty" firstAttribute="top" secondItem="ETT-gR-TNW" secondAttribute="top" id="AKD-zH-jn7"/>
                             <constraint firstItem="bA0-pH-AEI" firstAttribute="leading" secondItem="eVn-ze-OIA" secondAttribute="leading" id="CiI-6x-S4k"/>
                             <constraint firstItem="EIt-AH-93E" firstAttribute="leading" secondItem="eVn-ze-OIA" secondAttribute="trailing" constant="8" id="E8f-77-8Rz"/>
                             <constraint firstItem="wzS-mr-G7b" firstAttribute="top" secondItem="Klt-CO-4FD" secondAttribute="top" id="ETL-6Z-bHz"/>
+                            <constraint firstItem="Oqv-b4-UFV" firstAttribute="width" secondItem="oKo-dN-fvY" secondAttribute="width" id="G91-GE-xZy"/>
                             <constraint firstItem="jdx-rI-jrA" firstAttribute="trailing" secondItem="VDF-WY-OgJ" secondAttribute="trailing" id="GG3-XJ-JTa"/>
                             <constraint firstItem="VDF-WY-OgJ" firstAttribute="width" secondItem="eVn-ze-OIA" secondAttribute="width" id="GIP-rr-QyY"/>
                             <constraint firstItem="hzS-pq-yCa" firstAttribute="leading" secondItem="bA0-pH-AEI" secondAttribute="leading" id="Hg8-zn-NSh"/>
@@ -130,11 +194,15 @@
                             <constraint firstItem="Klt-CO-4FD" firstAttribute="top" secondItem="jgA-jd-31N" secondAttribute="bottom" constant="12" id="ZOO-7o-d4c"/>
                             <constraint firstItem="jgA-jd-31N" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="ZoY-dN-46e"/>
                             <constraint firstItem="wzS-mr-G7b" firstAttribute="trailing" secondItem="jgA-jd-31N" secondAttribute="trailing" id="Zpb-dt-vdK"/>
+                            <constraint firstItem="oKo-dN-fvY" firstAttribute="leading" secondItem="Oqv-b4-UFV" secondAttribute="trailing" constant="8" id="aFJ-nu-rDP"/>
                             <constraint firstItem="wzS-mr-G7b" firstAttribute="leading" secondItem="Klt-CO-4FD" secondAttribute="trailing" constant="8" id="bPq-Om-0Ie"/>
                             <constraint firstItem="ETT-gR-TNW" firstAttribute="top" secondItem="Klt-CO-4FD" secondAttribute="bottom" constant="12" id="d8j-Uz-ieZ"/>
+                            <constraint firstItem="oKo-dN-fvY" firstAttribute="top" secondItem="Oqv-b4-UFV" secondAttribute="top" id="eJK-ZW-Eoa"/>
                             <constraint firstItem="jgA-jd-31N" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="eas-2U-yuq"/>
                             <constraint firstItem="jdx-rI-jrA" firstAttribute="top" secondItem="bA0-pH-AEI" secondAttribute="top" id="fBq-gK-ZFL"/>
                             <constraint firstItem="eVn-ze-OIA" firstAttribute="top" secondItem="ETT-gR-TNW" secondAttribute="bottom" constant="12" id="hHW-8O-rIA"/>
+                            <constraint firstItem="Oqv-b4-UFV" firstAttribute="top" secondItem="hzS-pq-yCa" secondAttribute="bottom" constant="8" id="j5K-km-JcS"/>
+                            <constraint firstItem="Oqv-b4-UFV" firstAttribute="leading" secondItem="hzS-pq-yCa" secondAttribute="leading" id="krD-nY-WHq"/>
                             <constraint firstItem="EIt-AH-93E" firstAttribute="width" secondItem="eVn-ze-OIA" secondAttribute="width" id="lYw-EO-HYK"/>
                             <constraint firstItem="BGN-uY-Bbm" firstAttribute="trailing" secondItem="wzS-mr-G7b" secondAttribute="trailing" id="ldw-dQ-iRj"/>
                             <constraint firstItem="wzS-mr-G7b" firstAttribute="bottom" secondItem="Klt-CO-4FD" secondAttribute="bottom" id="mho-t9-27u"/>
@@ -142,7 +210,6 @@
                             <constraint firstItem="ETT-gR-TNW" firstAttribute="leading" secondItem="Klt-CO-4FD" secondAttribute="leading" id="s2g-wL-O4N"/>
                             <constraint firstItem="jdx-rI-jrA" firstAttribute="leading" secondItem="bA0-pH-AEI" secondAttribute="trailing" constant="8" id="x6E-jJ-ytl"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="textfieldForKeyboard" destination="jgA-jd-31N" id="GIZ-7a-gd7"/>
@@ -150,6 +217,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="139" y="138"/>
         </scene>
     </scenes>
 </document>

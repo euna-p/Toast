@@ -28,14 +28,17 @@ class ViewController: UIViewController {
     
     @IBAction private func didTappedAttributedToast(_ sender: UIButton) {
         let attributedString = NSMutableAttributedString(string: "It's an Attributed Toast message.\n",
-                                                         attributes: [.font: Toast.defaultTextFont,
+                                                         attributes: [.font: UIFont.systemFont(ofSize: 16.0),
                                                                       .foregroundColor: UIColor.white])
-        attributedString.append(NSAttributedString(string: "RED ",   attributes: [.font: Toast.defaultTextFont,
-                                                                                  .foregroundColor: UIColor.red]))
-        attributedString.append(NSAttributedString(string: "GREEN ", attributes: [.font: Toast.defaultTextFont,
-                                                                                  .foregroundColor: UIColor.green]))
-        attributedString.append(NSAttributedString(string: "BLUE ",  attributes: [.font: Toast.defaultTextFont,
-                                                                                  .foregroundColor: UIColor.blue]))
+        attributedString.append(NSAttributedString(string: "RED ",
+                                                   attributes: [.font: UIFont.systemFont(ofSize: 16.0),
+                                                                .foregroundColor: UIColor.red]))
+        attributedString.append(NSAttributedString(string: "GREEN ",
+                                                   attributes: [.font: UIFont.systemFont(ofSize: 16.0),
+                                                                .foregroundColor: UIColor.green]))
+        attributedString.append(NSAttributedString(string: "BLUE ",
+                                                   attributes: [.font: UIFont.systemFont(ofSize: 16.0),
+                                                                .foregroundColor: UIColor.blue]))
         Toast(text: attributedString).show()
     }
     
@@ -82,16 +85,14 @@ class ViewController: UIViewController {
     }
     
     @IBAction private func didTappedDefaultSizeToast(_ sender: UIButton) {
-        Toast.defaultTextFont  = .systemFont(ofSize: 14.0)
-        Toast.defaultRectRound = 6.0
+        Toast.defaultStyle.font = .systemFont(ofSize: 16.0)
         Toast
             .makeText("It's Default size Toast message.")
             .show()
     }
     
     @IBAction private func didTappedBigSizeToast(_ sender: UIButton) {
-        Toast.defaultTextFont  = .systemFont(ofSize: 24.0)
-        Toast.defaultRectRound = 14.0
+        Toast.defaultStyle.font = .systemFont(ofSize: 24.0)
         Toast
             .makeText("It's BIG SIZE Toast message.")
             .show()
@@ -106,6 +107,27 @@ class ViewController: UIViewController {
                 self?.present(alert, animated: true, completion: nil)
             })
             .show()
+    }
+    
+    @IBAction private func didTappedDefaultStyleToast(_ sender: UIButton) {
+        Toast.defaultStyle = .default
+    }
+    
+    @IBAction private func didTappedCustomStyleToast(_ sender: UIButton) {
+        Toast.defaultStyle.font            = .systemFont(ofSize: 24.0)
+        Toast.defaultStyle.fontColor       = .white
+        Toast.defaultStyle.backgroundColor = .purple
+        Toast.defaultStyle.minHeight       = 48.0
+        Toast.defaultStyle.cornerRadius    = (16.0, [.allCorners])
+        Toast.defaultStyle.paddingToScreen = .zero
+        Toast.defaultStyle.contentInsets   = .init(top: 16.0, left: 16.0, bottom: 16.0, right: 16.0)
+        Toast.defaultStyle.showAniation    = (0.5,
+                                              { $0.frame.origin.y += $0.bounds.size.height },
+                                              { $0.frame.origin.y -= $0.bounds.size.height })
+        Toast.defaultStyle.hideAnimation   = (0.5,
+                                              nil,
+                                              { $0.frame.origin.y += $0.bounds.size.height })
+        Toast.defaultStyle.isTapToDismiss  = false
     }
 }
 

@@ -30,7 +30,7 @@ public class Toast {
         public var minHeight: CGFloat?
         public var cornerRadius: (CGFloat, UIRectCorner)
         public var paddingToScreen: UIEdgeInsets?
-        public var showAniation: (TimeInterval, AnimationBlock?, AnimationBlock?)
+        public var showAnimation: (TimeInterval, AnimationBlock?, AnimationBlock?)
         public var hideAnimation: (TimeInterval, AnimationBlock?, AnimationBlock?)
         public var duration: TimeInterval
         public var gravity: Gravity
@@ -42,7 +42,7 @@ public class Toast {
                                                   minHeight:       nil,
                                                   cornerRadius:    (16.0, [.allCorners]),
                                                   paddingToScreen: nil,
-                                                  showAniation:    (0.25, { $0.alpha = 0.0 }, { $0.alpha = 1.0 }),
+                                                  showAnimation:   (0.25, { $0.alpha = 0.0 }, { $0.alpha = 1.0 }),
                                                   hideAnimation:   (0.25, {_ in }, { $0.alpha = 0.0 }),
                                                   duration:        Duration.medium.rawValue,
                                                   gravity:         .bottom,
@@ -130,9 +130,9 @@ extension Toast {
         if let firstToast = Toast.toastsQueue.first, firstToast.uuid == self.uuid {
             self.addToastView(target: targetWindow)
             
-            Toast.defaultStyle.showAniation.1?(self.viewToastBox)
-            UIView.animate(withDuration: Toast.defaultStyle.showAniation.0,
-                           animations:   { Toast.defaultStyle.showAniation.2?(self.viewToastBox) },
+            Toast.defaultStyle.showAnimation.1?(self.viewToastBox)
+            UIView.animate(withDuration: Toast.defaultStyle.showAnimation.0,
+                           animations:   { Toast.defaultStyle.showAnimation.2?(self.viewToastBox) },
                            completion:   nil)
             
             self.hideWorkItem = DispatchWorkItem(block: {[weak self] in

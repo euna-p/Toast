@@ -114,14 +114,14 @@ class ViewController: UIViewController {
     }
     
     @IBAction private func didTappedCustomStyleToast(_ sender: UIButton) {
-        Toast.defaultStyle.font            = .systemFont(ofSize: 24.0)
+        Toast.defaultStyle.font            = .systemFont(ofSize: 16.0)
         Toast.defaultStyle.fontColor       = .white
         Toast.defaultStyle.backgroundColor = .purple
         Toast.defaultStyle.minHeight       = 48.0
         Toast.defaultStyle.cornerRadius    = (16.0, [.allCorners])
         Toast.defaultStyle.paddingToScreen = .zero
         Toast.defaultStyle.contentInsets   = .init(top: 16.0, left: 16.0, bottom: 16.0, right: 16.0)
-        Toast.defaultStyle.showAniation    = (0.5,
+        Toast.defaultStyle.showAnimation   = (0.5,
                                               { $0.frame.origin.y += $0.bounds.size.height },
                                               { $0.frame.origin.y -= $0.bounds.size.height })
         Toast.defaultStyle.hideAnimation   = (0.5,

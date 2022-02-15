@@ -117,7 +117,7 @@ class ViewController: UIViewController {
         Toast.defaultStyle.font            = .systemFont(ofSize: 16.0)
         Toast.defaultStyle.fontColor       = .white
         Toast.defaultStyle.backgroundColor = .purple
-        Toast.defaultStyle.minHeight       = 48.0
+        Toast.defaultStyle.minimumSize     = .init(width: 48.0, height: 48.0)
         Toast.defaultStyle.cornerRadius    = (16.0, [.allCorners])
         Toast.defaultStyle.paddingToScreen = .zero
         Toast.defaultStyle.contentInsets   = .init(top: 16.0, left: 16.0, bottom: 16.0, right: 16.0)

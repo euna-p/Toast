@@ -27,7 +27,7 @@ public class Toast {
         public var font: UIFont
         public var fontColor: UIColor
         public var backgroundColor: UIColor
-        public var minHeight: CGFloat?
+        public var minimumSize: CGSize
         public var cornerRadius: (CGFloat, UIRectCorner)
         public var paddingToScreen: UIEdgeInsets?
         public var showAnimation: (TimeInterval, AnimationBlock?, AnimationBlock?)
@@ -39,7 +39,7 @@ public class Toast {
         public static let `default`: Self = .init(font:            .systemFont(ofSize: 16.0),
                                                   fontColor:       .white,
                                                   backgroundColor: UIColor.black.withAlphaComponent(0.66),
-                                                  minHeight:       nil,
+                                                  minimumSize:     .zero,
                                                   cornerRadius:    (16.0, [.allCorners]),
                                                   paddingToScreen: nil,
                                                   showAnimation:   (0.25, { $0.alpha = 0.0 }, { $0.alpha = 1.0 }),
@@ -292,6 +292,16 @@ extension Toast {
                         ])
             }
         }
+        
+        self.viewToastBox
+            .addConstraints([
+                .init(item: self.viewToastBox, attribute: .width,  relatedBy: .greaterThanOrEqual,
+                      toItem: nil,             attribute: .width,  multiplier: 1.0,
+                      constant: Toast.defaultStyle.minimumSize.width),
+                .init(item: self.viewToastBox, attribute: .height, relatedBy: .greaterThanOrEqual,
+                      toItem: nil,             attribute: .height, multiplier: 1.0,
+                      constant: Toast.defaultStyle.minimumSize.height)
+            ])
         
         self.labelMessage.layoutIfNeeded()
         self.viewToastBox.layoutIfNeeded()

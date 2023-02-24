@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,33 +12,8 @@
 		032A053722609F0700DFA0ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 032A053522609F0700DFA0ED /* Main.storyboard */; };
 		032A053922609F0800DFA0ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 032A053822609F0800DFA0ED /* Assets.xcassets */; };
 		032A053C22609F0800DFA0ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 032A053A22609F0800DFA0ED /* LaunchScreen.storyboard */; };
-		03D67BB72260AC25007BF74A /* Toast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D67BB42260AC20007BF74A /* Toast.framework */; };
-		03D67BB82260AC25007BF74A /* Toast.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 03D67BB42260AC20007BF74A /* Toast.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5D77946929A85E1100BFE01F /* Toast-dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 5D77946829A85E1100BFE01F /* Toast-dynamic */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		03D67BB32260AC20007BF74A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 03D67BAE2260AC20007BF74A /* Toast.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 032A04F222609BA500DFA0ED;
-			remoteInfo = Toast;
-		};
-		03D67BB52260AC20007BF74A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 03D67BAE2260AC20007BF74A /* Toast.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 032A04FB22609BA500DFA0ED;
-			remoteInfo = ToastTests;
-		};
-		03D67BB92260AC25007BF74A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 03D67BAE2260AC20007BF74A /* Toast.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 032A04F122609BA500DFA0ED;
-			remoteInfo = Toast;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		0346B08722609F6200A201F7 /* Embed Frameworks */ = {
@@ -47,7 +22,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				03D67BB82260AC25007BF74A /* Toast.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -62,7 +36,6 @@
 		032A053822609F0800DFA0ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		032A053B22609F0800DFA0ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		032A053D22609F0800DFA0ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		03D67BAE2260AC20007BF74A /* Toast.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Toast.xcodeproj; path = ../Toast.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03D67BB72260AC25007BF74A /* Toast.framework in Frameworks */,
+				5D77946929A85E1100BFE01F /* Toast-dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,7 +53,6 @@
 		032A052522609F0700DFA0ED = {
 			isa = PBXGroup;
 			children = (
-				03D67BAE2260AC20007BF74A /* Toast.xcodeproj */,
 				032A053022609F0700DFA0ED /* ToastTest */,
 				032A052F22609F0700DFA0ED /* Products */,
 			);
@@ -97,23 +69,14 @@
 		032A053022609F0700DFA0ED /* ToastTest */ = {
 			isa = PBXGroup;
 			children = (
+				032A053822609F0800DFA0ED /* Assets.xcassets */,
 				032A053122609F0700DFA0ED /* AppDelegate.swift */,
+				032A053A22609F0800DFA0ED /* LaunchScreen.storyboard */,
 				032A053522609F0700DFA0ED /* Main.storyboard */,
 				032A053322609F0700DFA0ED /* ViewController.swift */,
-				032A053822609F0800DFA0ED /* Assets.xcassets */,
-				032A053A22609F0800DFA0ED /* LaunchScreen.storyboard */,
 				032A053D22609F0800DFA0ED /* Info.plist */,
 			);
 			path = ToastTest;
-			sourceTree = "<group>";
-		};
-		03D67BAF2260AC20007BF74A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				03D67BB42260AC20007BF74A /* Toast.framework */,
-				03D67BB62260AC20007BF74A /* ToastTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,9 +94,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				03D67BBA2260AC25007BF74A /* PBXTargetDependency */,
 			);
 			name = ToastTestApp;
+			packageProductDependencies = (
+				5D77946829A85E1100BFE01F /* Toast-dynamic */,
+			);
 			productName = ToastTest;
 			productReference = 032A052E22609F0700DFA0ED /* ToastTestApp.app */;
 			productType = "com.apple.product-type.application";
@@ -162,37 +127,17 @@
 				Base,
 			);
 			mainGroup = 032A052522609F0700DFA0ED;
+			packageReferences = (
+				5D77946729A85E1100BFE01F /* XCRemoteSwiftPackageReference "Toast" */,
+			);
 			productRefGroup = 032A052F22609F0700DFA0ED /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 03D67BAF2260AC20007BF74A /* Products */;
-					ProjectRef = 03D67BAE2260AC20007BF74A /* Toast.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				032A052D22609F0700DFA0ED /* ToastTestApp */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		03D67BB42260AC20007BF74A /* Toast.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Toast.framework;
-			remoteRef = 03D67BB32260AC20007BF74A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		03D67BB62260AC20007BF74A /* ToastTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ToastTests.xctest;
-			remoteRef = 03D67BB52260AC20007BF74A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		032A052C22609F0700DFA0ED /* Resources */ = {
@@ -218,14 +163,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		03D67BBA2260AC25007BF74A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Toast;
-			targetProxy = 03D67BB92260AC25007BF74A /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		032A053522609F0700DFA0ED /* Main.storyboard */ = {
@@ -373,7 +310,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ToastTest/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -393,7 +330,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ToastTest/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -427,6 +364,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5D77946729A85E1100BFE01F /* XCRemoteSwiftPackageReference "Toast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/fallenlonelie/Toast.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5D77946829A85E1100BFE01F /* Toast-dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5D77946729A85E1100BFE01F /* XCRemoteSwiftPackageReference "Toast" */;
+			productName = "Toast-dynamic";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 032A052622609F0700DFA0ED /* Project object */;
 }

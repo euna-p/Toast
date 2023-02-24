@@ -65,21 +65,21 @@ class ViewController: UIViewController {
     
     @IBAction private func didTappedShortToast(_ sender: UIButton) {
         Toast
-            .makeText("It's a Short (1s) Toast message.")
+            .makeText("It's a Short (3s) Toast message.")
             .setDuration(.short)
             .show()
     }
     
     @IBAction private func didTappedMediumToast(_ sender: UIButton) {
         Toast
-            .makeText("It's a Medium (3s) Toast message.")
+            .makeText("It's a Medium (5s) Toast message.")
             .setDuration(.medium)
             .show()
     }
     
     @IBAction private func didTappedLongToast(_ sender: UIButton) {
         Toast
-            .makeText("It's a Long (5s) Toast message.")
+            .makeText("It's a Long (10s) Toast message.")
             .setDuration(.long)
             .show()
     }
@@ -116,7 +116,7 @@ class ViewController: UIViewController {
     @IBAction private func didTappedCustomStyleToast(_ sender: UIButton) {
         Toast.defaultStyle.font            = .systemFont(ofSize: 16.0)
         Toast.defaultStyle.fontColor       = .white
-        Toast.defaultStyle.backgroundColor = .purple
+        Toast.defaultStyle.backgroundColor = .brown
         Toast.defaultStyle.minimumSize     = .init(width: 48.0, height: 48.0)
         Toast.defaultStyle.cornerRadius    = (16.0, [.allCorners])
         Toast.defaultStyle.paddingToScreen = .zero

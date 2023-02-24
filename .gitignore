@@ -1,7 +1,10 @@
 .DS_Store
 *.userprefs
+*.xcworkspacedata
+xcshareddata
+xcuserdata
 UserInterfaceState.xcuserstate
-*.xcodeproj/project.xcworkspace/xcuserdata/*
-*.xcodeproj/xcuserdata/*
 xcschememanagement.plist
-.idea/*
+.idea
+.build
+.swiftpm

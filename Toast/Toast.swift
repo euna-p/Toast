@@ -9,9 +9,9 @@ import UIKit
 
 public class Toast {
     public enum Duration: TimeInterval {
-        case short  = 1.0
-        case medium = 3.0
-        case long   = 5.0
+        case short  =  3.0
+        case medium =  5.0
+        case long   = 10.0
     }
     
     public enum Gravity {

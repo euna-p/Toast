@@ -5,7 +5,7 @@ import PackageDescription
 let package = Package(
     name: "Toast",
     platforms: [
-        .iOS(.v11),
+        .iOS(.v8),
     ],
     products: [
         .library(name: "Toast-static", type: .static, targets: ["Toast"]),
